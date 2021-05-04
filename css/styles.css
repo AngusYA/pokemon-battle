@@ -1,0 +1,211 @@
+html {
+    height: -webkit-fill-available;
+}
+body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background-color: #f3f3f3;
+    color: #141414;
+}
+img {
+    width: 100%;
+    display: block;
+}
+#game-container {
+    width: 95%;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+}
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f3f3f3;
+    position: relative;
+}
+.monster-row {
+    width: 90%;
+    margin: 0 auto;
+}
+.top-row {
+    z-index: 1;
+}
+.mid-row {
+    z-index: 2;
+}
+.bot-row {
+    z-index: 3;
+}
+.absolute-row {
+    position: absolute;
+    width: calc(100% - 2px);
+    bottom: 0;
+}
+.monster-info {
+    width: fit-content;
+    height: fit-content;
+    padding: 8px 10px;
+    border-bottom: 1px solid #141414;
+    font-size: 1.3rem;
+}
+.opponent-info {
+    border-left: 1px solid #141414;
+}
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+.my-info {
+    border-right: 1px solid #141414;
+    align-self: flex-end;
+}
+.monster-image {
+    position: relative;
+    width: 40%;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: -webkit-transform 0.6s ease-in-out;
+    -moz-transition: -moz-transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
+}
+.opponent-image {
+    -webkit-transform: translateX(150%);
+    -moz-transform: translateX(150%);
+    transform: translateX(150%);
+}
+.my-image {
+    -webkit-transform: translateX(-150%);
+    -moz-transform: translateX(-150%);
+    transform: translateX(-150%);
+}
+.monster-in-position {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    transform: translateX(0);
+}
+.my-monster-attack {
+    -webkit-animation: my-attack 0.2s linear;
+	-moz-animation: my-attack 0.2s linear;
+	animation: my-attack 0.2s linear;
+}
+@-webkit-keyframes my-attack {
+	0% { left: 0 }
+	50% { left: 5% }
+    100% { left: 0 }
+}
+@-moz-keyframes my-attack {
+	0% { left: 0 }
+	50% { left: 5% }
+    100% { left: 0 }
+}
+@keyframes my-attack {
+	0% { left: 0 }
+	50% { left: 5% }
+    100% { left: 0 }
+}
+.opponent-attack {
+    -webkit-animation: opponent-attack 0.2s linear;
+	-moz-animation: opponent-attack 0.2s linear;
+	animation: opponent-attack 0.2s linear;
+}
+@-webkit-keyframes opponent-attack {
+	0% { left: 0 }
+	50% { left: -5% }
+    100% { left: 0 }
+}
+@-moz-keyframes opponent-attack {
+	0% { left: 0 }
+	50% { left: -5% }
+    100% { left: 0 }
+}
+@keyframes opponent-attack {
+	0% { left: 0 }
+	50% { left: -5% }
+    100% { left: 0 }
+}
+.monster-dead {
+    -webkit-transform: translateY(150%);
+    -moz-transform: translateY(150%);
+    transform: translateY(150%);
+}
+.game-control-container {
+    border: 1px solid #141414;
+}
+.game-message, .game-option {
+    padding: 5px 10px;
+}
+.game-message {
+    color: #555;
+}
+.game-option {
+    border-left: 1px solid #141414;
+}
+.global-message, .option-item {
+    padding: 3px 0;
+}
+.option-item {
+    cursor: pointer;
+}
+.indicator {
+    align-self: flex-end;
+    cursor: pointer;
+    padding: 5px;
+    -webkit-animation: blinker 1s step-start 0s infinite;
+	-moz-animation: blinker 1s step-start 0s infinite;
+	animation: blinker 1s step-start 0s infinite;
+}
+@-webkit-keyframes blinker {
+	50% { opacity: 0 }
+}
+@-moz-keyframes blinker {
+	50% { opacity: 0 }
+}
+@keyframes blinker {
+	50% { opacity: 0 }
+}
+
+/* absolute center spinner */
+
+.loading {
+    z-index: 999;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/bg_white.gif"), url("../img/bg_white.gif");
+    background-repeat: no-repeat, repeat;
+    background-size: 180px 180px, 66px 66px;
+    -webkit-animation: grass 3s linear infinite;
+	-moz-animation: grass 3s linear infinite;
+	animation: grass 3s linear infinite;
+}
+@-webkit-keyframes grass {
+	from { background-position: center, -360px center }
+	to { background-position: center, center }
+}
+@-moz-keyframes grass {
+	from { background-position: center, -360px center }
+	to { background-position: center, center }
+}
+@keyframes grass {
+	from { background-position: center, -360px center }
+	to { background-position: center, center }
+}
+
+/* Optimization for Mobile Phones */
+
+@media only screen and (max-width: 480px) {
+    body {
+        font-size: 1.1rem;
+    }
+    .monster-info {
+        font-size: 1rem;
+    }
+    .loading {
+        background-size: 90px 90px, 34.5px 34.5px;
+    }
+}
